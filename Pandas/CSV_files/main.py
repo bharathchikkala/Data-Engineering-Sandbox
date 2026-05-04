@@ -25,3 +25,44 @@ print(data.to_dict())
 
 temp_list = data["temp"].to_list()
 print(temp_list)
+
+#figuring out average of temp
+print(data["temp"].mean())
+
+print(data["temp"].max())
+
+#Get data in columns
+print(data["condition"])
+print(data.condition)
+
+#Get data in rows
+print(data[data["day"] == "Monday"])
+#also we can write
+print(data[data.day == "Tuesday"])
+print(data[data.day == "Wednesday"])
+
+print(data.temp.max())
+print(data[data.day == "Friday"])
+
+#getting the day which recorded more temperature on the week
+print(data[data.temp == data.temp.max()])
+
+
+monday = data[data.day == "Monday"]
+monday_temp = monday.temp[0]
+monday_temp_F = monday_temp * 9/5 + 32
+print(monday_temp_F)
+
+
+#creating dataframe from scratch
+
+some_dict = {
+    "students_id" : ["519","520","521"],
+    "marks" : [19,20,20]
+}
+new_dataframe = pandas.DataFrame(some_dict)
+print(new_dataframe)
+
+# created dataframe to csv
+
+new_dataframe.to_csv("DataFrame.csv")
