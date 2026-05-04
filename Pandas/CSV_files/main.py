@@ -19,3 +19,9 @@ import pandas
 
 data = pandas.read_csv("weather_data.csv")
 print(data["temp"])
+
+#understanding the dataframes and series in pandas
+print(data.to_dict())
+
+temp_list = data["temp"].to_list()
+print(temp_list)
