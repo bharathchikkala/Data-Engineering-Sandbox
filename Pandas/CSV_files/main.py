@@ -13,3 +13,5 @@ with open("weather_data.csv") as csvfile:
         if row_temp[1] != "temp":
             temperatures.append(int(row_temp[1]))
     print(temperatures)
+
+#well for less data and all its fine to use csv inbuilt library what about we have to check thousands of columns and rows so pandas entered the chat,lets work on it!
