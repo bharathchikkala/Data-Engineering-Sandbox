@@ -1,3 +1,7 @@
+'''
+If want we can keep as match we want in line 10,so that it gives that particular match data and (match 12, the dataset ball by ball was not given accurately in kaggle 
+dont know the reason but once we know web scraping we can do all that scraping from web by ourselves till then i have to use kaggle datasets)
+'''
 
 import pandas
 
