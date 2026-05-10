@@ -1,6 +1,13 @@
 import turtle
 import pandas
 
+'''
+The only problem is the coordinates of india are some are correct and some are not accuarte cause i manually adjusted the coordinates
+of each state so it takes lot time for those even few i adjusted so i leaved some of states same as the normal coordinate
+'''
+
+
+
 #to figure our coordinates(x,y)
 # def get_mouse_click_coor(x, y):
 #     print(x, y)
