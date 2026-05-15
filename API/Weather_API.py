@@ -3,6 +3,7 @@ For weather documention go through this link: https://openweathermap.org/api/cur
 For API_KEY login to above link and get your unique key
 To find your latitud and longitude of your place: https://www.latlong.net/
 To view your total data in json format: https://jsonviewer.stack.hu/
+what's ID in data: https://openweathermap.org/api/weather-conditions
 '''
 
 import requests
