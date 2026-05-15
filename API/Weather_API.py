@@ -10,7 +10,7 @@ import requests
 weather_parameters = {
     "lat" : 16.572090,
     "lon" : 82.000854,
-    "appid" : "985dbb049de5ec1aa9b90edfb1cf7257",
+    "appid" : "985dbb049de5ec1aa9b90edfb1cf7257", #api keys might stolen so instead of using direct key we can use, os.environ.get("API_KEY") environmental varibales
     "cnt" : 10  #1 cnt means 3hr of weather data in a day 
 }
 response = requests.get(url="http://api.openweathermap.org/data/2.5/forecast",params=weather_parameters)
