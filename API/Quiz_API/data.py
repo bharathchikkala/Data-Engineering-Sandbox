@@ -1,4 +1,6 @@
 #here is the main thing data from website by using its API
+# Trivia website link : https://opentdb.com/api_config.php
+
 import requests
 parameters = {
     "amount": 10,
