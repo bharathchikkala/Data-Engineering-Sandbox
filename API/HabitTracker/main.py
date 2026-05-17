@@ -3,6 +3,7 @@ from this mini understood how we use get,post,put,delete even indepth
 used websites for this mini project,
 PIXELA : https://docs.pixe.la/
 Also : https://pixe.la/
+Final output link: https://pixe.la/v1/users/bharathhchikkala/graphs/graph20.html
 '''
 
 import requests
