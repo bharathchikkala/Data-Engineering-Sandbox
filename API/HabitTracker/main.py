@@ -1,3 +1,10 @@
+'''
+from this mini understood how we use get,post,put,delete even indepth
+used websites for this mini project,
+PIXELA : https://docs.pixe.la/
+Also : https://pixe.la/
+'''
+
 import requests
 import datetime
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
