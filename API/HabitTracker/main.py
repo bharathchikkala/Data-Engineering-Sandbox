@@ -42,20 +42,22 @@ headers = {
 
 learning_endpoint = f"{PIXELA_ENDPOINT}/{USER_NAME}/graphs/{GRAPH_ID}"
 
-today = datetime.datetime(year=2026, month=5, day=10)
-#today = datetime.datetime.now()
+# today = datetime.datetime(year=2026, month=5, day=2)
+today = datetime.datetime.now()
 
 learning_parameters = {
     "date": today.strftime("%Y%m%d"),
-    "quantity": "1.20",
+    "quantity": input("How many hours worked on improve our stack today"),
 }
 
-# response = requests.post(url=learning_endpoint, json=learning_parameters,headers=headers)
-# print(response.text)
+response = requests.post(url=learning_endpoint, json=learning_parameters,headers=headers)
+print(response.text)
 
 change_data = f"{PIXELA_ENDPOINT}/{USER_NAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
 change_parameters = {
-    "quantity": "1.30",
+    "quantity": "1.2",
 }
+# response = requests.put(url=change_data, json=change_parameters,headers=headers)
+# print(response.text)
 response = requests.put(url=change_data, json=change_parameters,headers=headers)
 print(response.text)
