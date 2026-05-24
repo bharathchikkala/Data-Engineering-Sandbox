@@ -21,3 +21,11 @@ CREATE TABLE dogs(
   breed VARCHAR(20),
   age INT
 );
+CREATE TABLE pastries(
+	name VARCHAR(10),
+    quantity INT
+);
+
+DESC pastries;
+
+DROP TABLE pastries;
