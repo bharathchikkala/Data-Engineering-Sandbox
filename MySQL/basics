@@ -1,1 +1,12 @@
+#creating database
 
+CREATE DATABASE MILK_SHOP;
+CREATE DATABASE dogs;
+
+#delete database
+
+DELETE DATABASE dogs;
+
+#for knowing which database exits
+
+show databases;
