@@ -10,3 +10,14 @@ DELETE DATABASE dogs;
 #for knowing which database exits
 
 show databases;
+
+#creating tables
+
+CREATE DATABASE pet_shop;
+SLEECT pet_shop;
+
+CREATE TABLE dogs(
+  name VARCHAR(20),
+  breed VARCHAR(20),
+  age INT
+);
