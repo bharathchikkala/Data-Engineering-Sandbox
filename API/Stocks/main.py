@@ -1,3 +1,8 @@
+'''
+STOCK_PRIZE API DOCUMENTATION : https://www.alphavantage.co/documentation/
+NEWS_API DOC : https://newsapi.org/
+'''
+
 import requests
 
 from main import STOCK_NAME
