@@ -37,3 +37,9 @@ VALUES
 
 SELECT * FROM books;
 DESC books;
+
+-- CONCAT
+SELECT CONCAT(author_fname,' ',author_lname) AS name from books;
+
+-- CONCAT_WS
+SELECT CONCAT_WS('!','bharath','akka','raja') AS cousins;
