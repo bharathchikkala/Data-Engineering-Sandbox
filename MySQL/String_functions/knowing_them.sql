@@ -37,3 +37,58 @@ VALUES
 
 SELECT * FROM books;
 DESC books;
+
+-- CONCAT
+SELECT CONCAT(author_fname,' ',author_lname) AS name from books;
+
+-- CONCAT_WS
+SELECT CONCAT_WS('!','bharath','akka','raja') AS cousins;
+
+-- SUBSTRING
+SELECT SUBSTRING('hello flokes',1,10) AS substring;
+SELECT SUBSTRING('hello flokes',-6,4);
+SELECT SUBSTRING(title,1,15) AS title FROM books;
+
+-- SELECT SUBSTRING(title,1,10) AS short_title, CONCAT('...') FROM books;
+SELECT CONCAT(SUBSTRING(title,1,10),'...') AS short_title FROM books;
+
+SELECT CONCAT(SUBSTRING(author_fname,1,1),'.',SUBSTRING(author_lname,1,1),'.') AS author_initials FROM books;
+
+
+-- REPLACE
+SELECT REPLACE('hello world','hel','@*$&') AS changed;
+
+SELECT REPLACE(title,' ','-') AS dash_title FROM books;
+
+-- REVERSE
+SELECT REVERSE('ganga');
+SELECT REVERSE(author_fname) FROM books; 
+
+-- CHAR LENGTH
+SELECT CHAR_LENGTH('bharath') AS length;
+SELECT CHAR_LENGTH(title) FROM books;
+SELECT LENGTH(title) FROM books; #return value in bytes
+SELECT CONCAT(author_lname, ' is ', CHAR_LENGTH(author_lname), ' characters long') AS name_length FROM books;
+
+-- UPPER and LOWER
+SELECT CONCAT('title upper case like ',UPPER(title)) AS upper_case FROM books;
+
+-- INSERT
+SELECT UPPER(INSERT('hi bharath',3,0,' ganga')) AS inserting;
+
+-- LEFT
+SELECT UPPER(LEFT('bharath chikkala',7)) AS name;
+
+-- RIGHT
+SELECT UPPER(RIGHT('bharath chikkala',9)) AS surname;
+
+-- REPEAT
+SELECT REPEAT('bharath ',2) AS name;
+
+-- TRIM
+SELECT TRIM('   bharath   ');
+SELECT TRIM(LEADING 'a' FROM 'aaabharathaaaaaaaaaaaaaaa');
+SELECT TRIM(TRAILING 'a' FROM 'aaabharathaaaaaaaaaaaaaaa');
+SELECT TRIM(BOTH 'u' FROM 'uuuuuuuuuuuuuuuuuuubharathuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu') AS calling;
+
+
