@@ -45,3 +45,27 @@ INSERT INTO books
            
            
 SELECT * FROM books;
+
+
+
+-- DISTINCT
+SELECT DISTINCT author_lname FROM books;
+SELECT DISTINCT CONCAT(author_fname,',',author_lname) AS uniq_authors FROM books;
+
+-- ORDER BY
+SELECT book_id,author_fname,released_year,stock_quantity FROM books ORDER BY stock_quantity;
+SELECT book_id,author_fname,released_year,stock_quantity FROM books ORDER BY stock_quantity DESC;
+SELECT book_id,title,pages FROM books ORDER BY pages DESC;
+
+SELECT book_id,title,pages FROM books ORDER BY 3;
+SELECT author_fname,pages,released_year FROM books ORDER BY pages,released_year;
+
+-- LIMIT
+SELECT book_id,title,released_year FROM books ORDER BY released_year LIMIT 5;
+
+-- LIKE
+SELECT book_id,title,author_fname FROM books WHERE author_fname LIKE '%da%';
+SELECT book_id,title,author_fname FROM books WHERE author_fname LIKE '____';
+
+-- Escaping Wildcards
+SELECT title FROM books WHERE title LIKE '%\%%';
