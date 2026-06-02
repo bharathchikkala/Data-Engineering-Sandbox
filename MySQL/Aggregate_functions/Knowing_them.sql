@@ -51,3 +51,61 @@ SELECT COUNT(DISTINCT(released_year)) AS year FROM books;
 
 -- how many titles contain 'the'
 SELECT COUNT(title) FROM books WHERE title LIKE '%the%';
+
+-- GROUP BY
+SELECT author_lname,COUNT(*) FROM books GROUP BY author_lname ORDER BY COUNT(*) DESC;
+
+SELECT released_year,COUNT(title) FROM books GROUP BY released_year;
+SELECT author_lname,COUNT(*) FROM books GROUP BY author_lname;
+
+
+--  MIN & MAX
+SELECT MIN(released_year) AS oldest_book FROM books;
+SELECT MAX(pages) AS most_pages FROM books;
+
+-- SELECT MAX(pages),title FROM books; wrong
+SELECT title,pages FROM books ORDER BY pages DESC LIMIT 1;
+SELECT * FROM books WHERE released_year = 2001;
+
+-- Subqueries
+SELECT title,pages FROM books WHERE pages = (SELECT MAX(pages) FROM books);
+SELECT title,released_year FROM books ORDER BY released_year LIMIT 2;
+select title,min(released_year) from books;
+SELECT title,released_year FROM books WHERE released_year = (SELECT MIN(released_year) FROM books);
+
+-- GROUP BY with multiple coloumns
+SELECT author_lname FROM books GROUP BY author_lname,author_fname;
+SELECT author_lname,COUNT(*) FROM books GROUP BY author_lname,author_fname;
+SELECT CONCAT(author_fname,' ',author_lname) AS author,COUNT(*) AS written FROM books GROUP BY author;
+
+
+-- MIN/MAX with GROUP BY
+SELECT DISTINCT(CONCAT(author_fname,' ',author_lname)) AS author,MIN(released_year) FROM books GROUP BY author;
+
+SELECT
+    CONCAT(author_fname, ' ', author_lname) AS author,
+    COUNT(*) AS books_written,
+    MIN(released_year),
+    MAX(released_year),
+    MAX(pages),MIN(pages)
+FROM
+    books
+GROUP BY author;
+
+SELECT MAX(pages) FROM books GROUP BY author_fname;
+
+-- SUM
+SELECT SUM(pages) FROM books;
+
+SELECT CONCAT(author_fname,' ',author_lname) AS author,SUM(pages) FROM books GROUP BY author_fname,author_lname ORDER BY SUM(pages) DESC;
+
+-- AVG
+SELECT AVG(released_year) FROM books;
+
+SELECT released_year,AVG(stock_quantity) FROM books GROUP BY released_year ORDER BY released_year;
+SELECT 
+    released_year, 
+    AVG(stock_quantity), 
+    COUNT(*) FROM books
+GROUP BY released_year;
+SELECT released_year,stock_quantity FROM books;
