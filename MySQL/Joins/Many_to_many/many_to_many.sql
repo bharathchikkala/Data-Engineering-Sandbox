@@ -72,3 +72,43 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
     (10,5,9.9),
     (13,3,8.0),(13,4,7.2),
     (14,2,8.5),(14,3,8.9),(14,4,8.9);
+
+-- 1) each reviewer rating
+SELECT title,rating FROM series JOIN reviews ON reviews.series_id = series.id;
+
+-- 2) avg rating of each series
+SELECT title,AVG(rating) FROM series JOIN reviews ON reviews.series_id = series.id GROUP BY title ORDER BY AVG(rating);
+
+-- 3) 
+SELECT first_name,last_name,rating FROM reviewers JOIN reviews ON reviews.reviewer_id = reviewers.id;
+
+-- 4)
+SELECT * FROM series LEFT JOIN reviews ON series.id = reviews.series_id WHERE reviews.series_id is NULL;
+
+SELECT series.title
+FROM series
+LEFT JOIN reviews  ON series.id = reviews.series_id
+WHERE reviews.series_id IS NULL;
+
+SELECT title AS unreviewed_series FROM series LEFT JOIN reviews ON reviews.series_id = series.id WHERE series_id IS NULL;
+
+-- 5) average of genres
+SELECT genre,AVG(rating) FROM series LEFT JOIN reviews ON series.id = reviews.series_id group by genre;
+
+
+-- 6)
+SELECT first_name,last_name,COUNT(rating),IFNULL(MIN(rating),0) AS MIN,IFNULL(MAX(rating),0) AS MAX,
+	IFNULL(ROUND(AVG(rating),2),0) AS Avg_rating,
+	CASE 
+    WHEN COUNT(rating) = 0 THEN 'INACTIVE'
+	ELSE 'ACTIVE'
+    END AS STATUS
+ FROM reviewers LEFT JOIN reviews ON reviewers.id = reviews.reviewer_id GROUP BY first_name,last_name;
+ 
+-- SELECT *  FROM reviewers RIGHT JOIN reviews ON reviewers.id = reviews.reviewer_id;
+
+-- 7)
+SELECT title,rating,CONCAT(first_name,' ',last_name) AS reviewer FROM series JOIN reviews ON series.id = reviews.series_id
+JOIN reviewers ON reviewers.id = reviews.reviewer_id ORDER BY title;
+
+
