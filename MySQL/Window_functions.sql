@@ -88,4 +88,21 @@ SELECT department,salary,
 SELECT department,salary,
 	NTILE(5) OVER(ORDER BY salary DESC)
     FROM employees;
+
+
+-- FIRST_VALUE
+SELECT emp_no,department,salary,
+	FIRST_VALUE(emp_no) OVER(ORDER BY salary DESC) AS high_paid
+    FROM employees ORDER BY salary;
     
+SELECT emp_no,department,salary,
+	FIRST_VALUE(emp_no) OVER(PARTITION BY department ORDER BY salary DESC) AS high_paid_dept FROM employees ORDER BY emp_no;
+    
+-- LEAD and LAG
+SELECT department,salary,
+	LAG(salary) OVER(PARTITION BY department)
+    FROM employees;
+    
+SELECT department,salary,
+	LEAD(salary) OVER(PARTITION BY department)
+    FROM employees;
