@@ -62,3 +62,30 @@ SELECT department,salary,
     
 SELECT department,SUM(salary) FROM employees GROUP BY department;
 
+-- RANK
+SELECT department,salary,
+	RANK() OVER(ORDER BY salary DESC)
+    FROM employees;
+    
+SELECT department,salary,
+	RANK() OVER(PARTITION BY department ORDER BY salary DESC) FROM employees;
+    
+SELECT department,salary,
+	ROW_NUMBER() OVER(ORDER BY salary DESC),
+	DENSE_RANK() OVER(ORDER BY salary DESC),
+	RANK() OVER(ORDER BY salary DESC) FROM employees;
+    
+-- ROW_NUMBER and DENSE_RANK
+SELECT department,salary,
+	ROW_NUMBER() OVER(PARTITION BY department ORDER BY salary DESC) AS row_num,
+    DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) AS dense_num,
+    RANK() OVER(PARTITION BY department ORDER BY salary DESC) AS rank_num FROM employees;
+    
+SELECT department,salary,
+	DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) FROM employees;
+    
+-- NTILE
+SELECT department,salary,
+	NTILE(5) OVER(ORDER BY salary DESC)
+    FROM employees;
+    
