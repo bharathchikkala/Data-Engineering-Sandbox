@@ -34,3 +34,31 @@ INSERT INTO employees (department, salary) VALUES
 ('customer service', 55000);
 
 SELECT * FROM employees;
+
+-- OVER()
+SELECT department,AVG(salary) FROM employees GROUP BY department;
+SELECT AVG(salary) FROM employees;
+
+SELECT AVG(salary) OVER() FROM employees;
+SELECT department,salary,AVG(salary) OVER() FROM employees;
+
+-- PARTITION BY
+SELECT department,salary,AVG(salary) OVER(PARTITION BY department) FROM employees;
+
+-- EACH DEPT PAY
+SELECT department,salary,
+	SUM(salary) OVER(PARTITION BY department) AS total_spent_by_dept,
+    SUM(salary) OVER() AS total_pay
+    FROM employees;
+    
+-- ORDER BY
+SELECT department,AVG(salary) FROM employees GROUP BY department ORDER BY AVG(salary);
+
+SELECT department,salary,
+	AVG(salary) OVER(PARTITION BY department ORDER BY salary) AS avg_salary,
+    SUM(salary) OVER(PARTITION BY department ORDER BY salary) AS sum
+    -- AVG(salary) OVER(ORDER BY AVG(salary))
+    FROM employees;
+    
+SELECT department,SUM(salary) FROM employees GROUP BY department;
+
