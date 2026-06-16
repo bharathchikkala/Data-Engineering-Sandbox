@@ -81,3 +81,5 @@ SELECT name,birthdate,birthdate + INTERVAL 21 YEAR FROM people;
 SELECT name,birthdate,
 	DATEDIFF(CURDATE(), birthdate + INTERVAL 21 year) AS over_days
     FROM people;
+-- birthdate
+
