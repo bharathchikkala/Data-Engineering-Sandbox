@@ -40,3 +40,44 @@ SELECT DAYNAME('2004-12-02');
 SELECT DAYNAME('2004-10-23');
 
 SELECT name,birthdate,DAYNAME(birthdate),DAYOFYEAR(birthdate),WEEK(birthdate) AS day FROM people;
+
+
+-- TIME FUNCTIONS
+SELECT 
+    birthdt,
+    YEAR(birthdate),
+    MONTH(birthdt),
+    MONTHNAME(birthdate),
+    DAY(birthdate),
+    HOUR(birthdt),
+    SECOND(birthtime),
+    MICROSECOND(birthdt)
+FROM
+    people;
+    
+-- Formatting Dates
+
+SELECT birthdate, DATE_FORMAT(birthdate, '%a %b %D') FROM people;
+ 
+SELECT birthdt, DATE_FORMAT(birthdt, '%H:%i') FROM people;
+ 
+SELECT birthdt, DATE_FORMAT(birthdt, 'BORN ON: %r') FROM people;
+
+-- DATE MATH
+SELECT birthdate FROM people;
+
+SELECT DATEDIFF(birthdate,CURDATE()) FROM people;
+
+SELECT birthdate FROM people WHERE name = 'bharath';
+
+SELECT 'Ganga Garu was older by:' AS what,DATEDIFF(
+	(SELECT birthdate FROM people WHERE name = 'bharath'),
+    (SELECT birthdate FROM people WHERE name = 'ganga')) AS diff_between_us;
+    
+SELECT TIMEDIFF(CURTIME(),'07:00:00');
+
+SELECT name,birthdate,birthdate + INTERVAL 21 YEAR FROM people;
+
+SELECT name,birthdate,
+	DATEDIFF(CURDATE(), birthdate + INTERVAL 21 year) AS over_days
+    FROM people;
