@@ -91,3 +91,45 @@ SELECT title,stock_quantity,
     END AS stocks
     FROM books;
 
+-- EXERCISE
+-- 1) select all books written before 1980
+SELECT * FROM books WHERE released_year < 1980;
+
+-- 2) select author with name eggers , chabon
+SELECT * FROM books WHERE author_lname LIKE 'eggers' OR author_lname LIKE 'chabon';
+
+-- 3)
+SELECT * FROM books WHERE author_lname = 'lahiri' AND released_year > 2000;
+
+-- 4)
+SELECT * FROM books WHERE pages BETWEEN 100 AND 200;
+
+-- 5)
+SELECT * FROM books WHERE author_lname LIKE 'C%' OR author_lname LIKE 's%';
+
+-- 6)
+SELECT title,author_lname,
+	CASE
+    WHEN title LIKE '%stories%' THEN 'Short Stories'
+    WHEN title LIKE '%just kids%' OR title LIKE '%A heartbreaking work%' THEN 'Memoir'
+    ELSE 'Novel'
+    END AS TYPE
+    FROM books;
+    
+-- 7)
+SELECT author_fname,author_lname,CONCAT(COUNT(*),' ',
+	CASE
+    WHEN COUNT(*) = 1 THEN 'book'
+    ELSE 'books'
+    END) AS count FROM books GROUP BY author_fname,author_lname;
+    
+SELECT 10 = 10;
+SELECT 1 IN (5,3);
+
+SELECT CONCAT(author_fname,' ',author_lname) AS author,
+	CONCAT(COUNT(*),
+	CASE
+    WHEN COUNT(*) = 1 THEN ' book'
+    ELSE ' books'
+    END) AS count
+    FROM books GROUP BY author;
