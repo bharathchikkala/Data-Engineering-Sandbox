@@ -42,3 +42,52 @@ INSERT INTO books
            ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
 
 SELECT * FROM books;
+
+-- NOT EQUAL
+SELECT title,released_year FROM books WHERE released_year != 2017;
+
+-- NOT LIKE
+SELECT title FROM books WHERE title LIKE '% %';
+SELECT title FROM books WHERE title NOT LIKE '% %';
+
+-- GREATER THAN
+SELECT title FROM books WHERE CHAR_LENGTH(title) > 20;
+SELECT title,released_year FROM books WHERE released_year >= 2000 ORDER BY released_year;
+
+-- LOGICAL AND
+SELECT title,CONCAT(author_fname,' ',author_lname) AS author,released_year FROM books
+	WHERE CONCAT(author_fname,' ',author_lname) = 'Dave eggers' AND released_year > 2010;
+    
+SELECT * FROM books WHERE CHAR_LENGTH(title) > 20 AND pages > 300 ORDER BY released_year,pages;
+
+-- LOGICAL OR
+SELECT * FROM books WHERE released_year > 2010 OR stock_quantity > 120;
+
+-- BETWEEN
+SELECT * FROM books WHERE released_year BETWEEN 2010 AND 2017 ORDER BY released_year;
+
+-- IN OPERATOR
+SELECT * FROM books WHERE author_lname IN ('lahiri','smith');
+
+SELECT * FROM books WHERE released_year IN (2015,'2016',2004,2010);
+
+SELECT * FROM books WHERE released_year % 2 != 0;
+
+SELECT * FROM books WHERE released_year % 2 != 0 AND pages > 200 OR stock_quantity > 100;
+
+-- CASE STATEMENTS
+SELECT title,released_year,
+	CASE 
+    WHEN released_year >= 2000 THEN 'Modern book'
+	ELSE '20th Century one'
+    END AS GENRE
+    FROM books;
+    
+SELECT title,stock_quantity,
+	CASE 
+    WHEN stock_quantity < 50 THEN '*'
+	WHEN stock_quantity BETWEEN 50 AND 100 THEN '**'
+    ELSE '***'
+    END AS stocks
+    FROM books;
+
