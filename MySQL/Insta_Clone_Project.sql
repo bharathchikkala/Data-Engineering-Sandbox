@@ -34,3 +34,25 @@ CREATE TABLE comments(
 	);
     
 DESC comments;
+
+-- Likes Schema
+CREATE TABLE likes(
+	user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES users(id),
+    photo_id INT NOT NULL,
+    FOREIGN KEY(photo_id) REFERENCES photos(id),
+    created_at TIMESTAMP DEFAULT NOW(),
+    PRIMARY KEY(user_id,photo_id)
+);
+-- DROP TABLE likes;
+DESC likes;
+
+-- Follows Schema
+CREATE TABLE follow_people(
+	follower_id INT NOT NULL,
+    followee_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(follower_id) REFERENCES users(id),
+	FOREIGN KEY(followee_id) REFERENCES users(id),
+    PRIMARY KEY(follower_id,followee_id)
+);
