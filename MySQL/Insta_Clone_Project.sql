@@ -100,3 +100,27 @@ SELECT * FROM photos INNER JOIN likes ON photos.id = likes.photo_id;
 SELECT username,COUNT(*) AS total_likes,photo_id FROM photos INNER JOIN likes ON photos.id = likes.photo_id 
 	INNER JOIN users ON users.id = photos.user_id
     GROUP BY photo_id ORDER BY COUNT(*) DESC LIMIT 1;
+
+-- 5)avg user posts
+SELECT * FROM users INNER JOIN photos ON users.id = photos.user_id;
+
+SELECT AVG(user_posts) FROM
+	(SELECT 
+    username, COUNT(*) AS user_posts
+FROM
+    users
+        INNER JOIN
+    photos ON users.id = photos.user_id
+GROUP BY username) AS sub;
+
+-- 6)top 5 commonly used hashtags
+SELECT tag_name,COUNT(*) FROM tags INNER JOIN photo_tags ON tags.id = photo_tags.tag_id 
+	GROUP BY tag_name ORDER BY COUNT(*) DESC LIMIT 5;
+    
+-- 7)find users who liked every photo
+SELECT users.username,likes.user_id,COUNT(*) FROM likes INNER JOIN photos ON likes.photo_id = photos.id 
+	INNER JOIN users ON users.id = likes.user_id
+	GROUP BY likes.user_id ORDER BY COUNT(*) DESC LIMIT 13;
+
+SELECT image_url,COUNT(*) FROM photos GROUP BY image_url; -- 257 photos
+SELECT username FROM users; -- 100 users
