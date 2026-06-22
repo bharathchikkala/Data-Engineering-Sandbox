@@ -1,4 +1,4 @@
-
+# deep crawling is nothing but going through multiple pages for data
 
 import requests
 from bs4 import BeautifulSoup
