@@ -1,26 +1,28 @@
-# Data-Engineering-Sandbox
-​A structured repository containing foundational code, algorithms, and modular logic for Python programming, data manipulation (Pandas), and database management (SQL). Built as the core architecture testing ground for upcoming end-to-end data pipelines.
-# Automated Sports Data Analytics Pipeline (In Development)
+# Automated Job Market Intelligence Pipeline
 
-## Overview
-This repository contains the foundational architecture and modular code for an upcoming End-to-End Sports Analytics Engine. The ultimate goal of this pipeline is to autonomously extract live sports data, clean and structure it using Pandas, store it in a relational database, and visualize custom metrics.
+This repository contains the architecture and production code for an end-to-end Data Engineering pipeline. The project focuses on extracting unstructured job market data, applying rigorous data cleaning and normalization techniques, and persisting the processed data into a structured MySQL database for business intelligence.
 
-## Current Development Phase
-*Phase 1: Object-Oriented Programming & Engine Logic (In Progress)*
+## Pipeline Architecture
+This pipeline follows a standard ETL (Extract, Transform, Load) workflow:
 
-## Project Architecture & Roadmap
-
-* *Phase 1: Core Logic (Current)*
-  * Building the foundational Python classes, objects, and error-handling modules that will run the scraper. 
-
-* *Phase 2: Data Extraction*
-  * Developing automated web scrapers (Selenium/BeautifulSoup) to bypass security and pull raw tabular data.
-
-* *Phase 3: Data Transformation*
-  * Utilizing Pandas to handle missing values, format dates, and execute complex data merges.
-
-* *Phase 4: Data Warehousing*
-  * Bridging the cleaned Python DataFrames into a structured MySQL relational database.
+Extraction (E): Utilizes `Selenium` and `BeautifulSoup` to bypass web dynamic-loading constraints and scrape unstructured job postings.
+*   Transformation (T):Leverages `Pandas` and `NumPy` to perform complex data wrangling. This includes:
+    *   Normalizing inconsistent salary and experience metrics.
+    *   Handling null-value data imputation to ensure 95%+ data integrity.
+    *   Resolving delimiter inconsistencies.
+*   Loading (L):Implements a robust connection to `MySQL`, bypassing memory constraints by generating optimized SQL instruction scripts for native execution.
 
 ## Tech Stack
-*Languages & Tools:* Python | Pandas | SQL (MySQL) | Selenium/BeautifulSoup | Streamlit
+*   Languages: Python, Advanced SQL
+*   Data Processing: Pandas, NumPy
+*   Web Scraping: Selenium, BeautifulSoup, Requests
+*   Storage: MySQL
+*   Visualization: Power BI, Streamlit
+
+## Key Achievements
+*   Successfully engineered a pipeline to handle and clean 42,000+ job listings.
+*   Solved complex system-level memory conflicts (Access Violation errors) by refactoring the load process from bulk-streaming to native SQL script generation.
+*   Designed a relational database schema optimized for query performance and trend analysis.
+
+---
+*Developed by Chikkala Venkata Bharath*
