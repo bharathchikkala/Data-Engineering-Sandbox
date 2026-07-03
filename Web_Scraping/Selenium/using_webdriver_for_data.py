@@ -72,7 +72,7 @@ for role in target_roles:
 
 
     page_number = 1
-    while True:
+        while True:
         print(f"\n--- Scraping Page {page_number} for {role} ---")
 
         # get every job on page we are!
@@ -118,3 +118,38 @@ for role in target_roles:
 
             except Exception as e:
                 pass
+
+        # CLICKING THE NEXT BUTTON
+        try:
+            '''
+                   why used .execute_script is for search next and click next cause of too many tags inbetween so 
+                   we just used force click on next by .execute_scrript
+                   '''
+            next_button = driver.find_element(By.XPATH, "//span[text()='Next']")
+            driver.execute_script("arguments[0].click();", next_button)
+            print("Clicking Next... Waiting 4 seconds for new page to load...")
+            time.sleep(5)
+            page_number += 1
+
+        except Exception as e:
+            print(f"No Next button found. We scraped all available pages for {role}!")
+            break  #get out of the page loop, moves to the next role!
+
+
+print(f"SCRAPING COMPLETELY FINISHEd!")
+print(f"We successfully extracted {len(master_job_list)} total jobs across our target roles: {target_roles}.")
+
+
+print("Converting data and saving to CSV...")
+
+
+df = pd.DataFrame(master_job_list)
+
+
+df.to_csv("other_roles.csv", index=False)
+
+print("SUCCESS! Check your PyCharm folder for 'master_jobs_dataset.csv'.")
+print("You are now ready for the Pandas cleanup phase!")
+
+# close the robot
+driver.quit()
