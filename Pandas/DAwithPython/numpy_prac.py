@@ -16,3 +16,11 @@ print(arran)
 
 one = np.ones([4,5])
 print(one)
+
+# vectorized operations
+arr3 = np.array([19,20,21])
+print(f"Addition:{arr1+arr3}")
+
+# universal functions
+print(np.sqrt(arr1))
+print(np.exp(arr1))
