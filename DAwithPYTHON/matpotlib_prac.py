@@ -34,3 +34,21 @@ plt.ylabel('Values')
 # plt.subplots_adjust(top=0.85)
 plt.bar(items,values,color='green')
 plt.show()
+
+# histogram
+data = [1,1,2,2,2,3,3,3,3,4,4,4,4,4,5,5,5,5,5,5]
+plt.hist(data, bins=5)
+plt.show()
+
+# scatter plot
+x = [1,2,3,4,5,10,20]
+y = [0,5,9,13,15,20,100]
+plt.scatter(x,y,color='green',marker='*')
+plt.show()
+
+# pie chart
+labels = ['A','B','C','D','E']
+sizes = [2,7,13,15,20]
+colors = ['red','green','orange','blue','yellow']
+plt.pie(sizes,labels=labels,colors=colors,autopct='%1.1f%%',explode=[0,0,0,0,0.2])
+plt.show()
